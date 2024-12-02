@@ -15,7 +15,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-logging")
 
     implementation("ai.ancf.lmos:arc-azure-client:0.111.0")
-    implementation("ai.ancf.lmos:arc-spring-boot-starter:0.111.0")
+    implementation("ai.ancf.lmos:arc-spring-boot-starter:0.114.0")
 
     //implementation("dev.langchain4j:langchain4j-azure-open-ai:0.35.0")
     //implementation("dev.langchain4j:langchain4j:0.35.0")
