@@ -1,5 +1,5 @@
 plugins {
-    id("io.ktor.plugin") version "3.0.0"
+    id("io.ktor.plugin") version "3.0.2"
 }
 
 dependencies {
