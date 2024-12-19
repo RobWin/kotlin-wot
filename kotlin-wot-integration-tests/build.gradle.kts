@@ -11,7 +11,7 @@ dependencies {
     api(project(":kotlin-wot-reflection"))
     api(project(":kotlin-wot-spring-boot-starter"))
     implementation("ai.ancf.lmos:arc-azure-client:0.111.0")
-    api("ai.ancf.lmos:arc-spring-boot-starter:0.111.0")
+    api("ai.ancf.lmos:arc-spring-boot-starter:0.120.0")
 
     //implementation("dev.langchain4j:langchain4j-azure-open-ai:0.35.0")
     //implementation("dev.langchain4j:langchain4j:0.35.0")
