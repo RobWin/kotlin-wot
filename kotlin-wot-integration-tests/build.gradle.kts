@@ -23,7 +23,7 @@ dependencies {
     //implementation("dev.langchain4j:langchain4j:0.35.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.hivemq:hivemq-mqtt-client:1.3.3")
-    implementation("org.testcontainers:testcontainers:1.20.3")
+    implementation("org.testcontainers:testcontainers:1.20.5")
 }
 
 tasks.withType<BootJar> {
