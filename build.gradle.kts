@@ -18,10 +18,31 @@ subprojects {
         testImplementation("io.mockk:mockk:1.13.13")
     }
 
+
+
+    tasks.register<Jar>("sourcesJar") {
+        archiveClassifier.set("sources")
+        from(sourceSets.main.get().allSource)
+        dependsOn("classes")
+    }
+
+    tasks.register<Jar>("javadocJar") {
+        archiveClassifier.set("javadoc")
+        from(tasks.javadoc)
+        dependsOn("javadoc")
+    }
+
+    artifacts {
+        add("archives", tasks["sourcesJar"])
+        add("archives", tasks["javadocJar"])
+    }
+
     publishing {
         publications {
             create<MavenPublication>("mavenKotlin") {
                 from(components["java"])
+                artifact(tasks["sourcesJar"])
+                artifact(tasks["javadocJar"])
                 artifactId = project.name
             }
         }
