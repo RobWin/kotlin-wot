@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: sample-dummy-agent
+  main:
+    banner-mode: off
