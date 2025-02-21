@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component
 @Thing(id="chatagent", title="Chat Agent",
     description="A chat agent.", type= LMOSThingType.AGENT)
 @Context(prefix = LMOSContext.prefix, url = LMOSContext.url)
+@Link(href = "lmos/capabilities", rel = "service-meta", type = "application/json")
 @VersionInfo(instance = "1.0.0")
 @Component
 class ChatAgent(agentProvider: AgentProvider, @Property(readOnly = true)

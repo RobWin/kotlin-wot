@@ -103,7 +103,7 @@ interface WoTThingDescription : BaseSchema {
      * @return an array of links.
      */
     @get:JsonInclude(JsonInclude.Include.NON_EMPTY)
-    var links: List<Link>? // Optional: Array of Link
+    var links: MutableList<Link> // Optional: Array of Link
 
     /**
      * Set of form hypermedia controls that describe how an operation can be performed.

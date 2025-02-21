@@ -74,7 +74,7 @@ data class ThingDescription @JsonCreator constructor(
     @JsonInclude(NON_EMPTY) override var created: String? = null,
     @JsonInclude(NON_EMPTY) override var modified: String? = null,
     @JsonInclude(NON_EMPTY) override var support: String? = null,
-    @JsonInclude(NON_EMPTY) override var links: List<Link>? = null,
+    @JsonInclude(NON_EMPTY) override var links: MutableList<Link> = mutableListOf(),
     @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY]) @JsonInclude(NON_EMPTY) override var profile: List<String>? = null,
     @JsonInclude(NON_EMPTY) override var schemaDefinitions: MutableMap<String, DataSchema<Any>>? = null,
     @JsonInclude(NON_EMPTY) override var uriVariables: MutableMap<String, DataSchema<Any>>? = null

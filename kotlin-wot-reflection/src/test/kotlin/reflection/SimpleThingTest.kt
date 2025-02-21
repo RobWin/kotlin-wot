@@ -8,7 +8,9 @@ import ai.ancf.lmos.wot.content.toJsonContent
 import ai.ancf.lmos.wot.reflection.things.SimpleThing
 import ai.ancf.lmos.wot.thing.ExposedThing
 import ai.ancf.lmos.wot.thing.schema.ContentListener
+import ai.ancf.lmos.wot.thing.schema.Link
 import ai.ancf.lmos.wot.thing.schema.StringSchema
+import ai.ancf.lmos.wot.thing.schema.WoTThingDescription
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import java.util.concurrent.CountDownLatch
@@ -21,6 +23,7 @@ class SimpleThingTest {
     lateinit var wot: Wot
     lateinit var simpleThing: SimpleThing
     lateinit var exposedThing: ExposedThing
+    lateinit var thingDescription: WoTThingDescription
 
     @BeforeTest
     fun setUp() = runTest {
@@ -35,9 +38,20 @@ class SimpleThingTest {
 
         // Generate ThingDescription from the class
         exposedThing = ExposedThingBuilder.createExposedThing(wot, simpleThing, SimpleThing::class) as ExposedThing
+        thingDescription = exposedThing.getThingDescription()
 
         servient.addThing(exposedThing)
         servient.expose("simpleThing")
+    }
+
+    @Test
+    fun `test ThingDescription creation for SimpleThing`() {
+        // Validate Thing metadata
+        assertEquals("simpleThing", thingDescription.id, "ThingDescription ID should match the class ID")
+        assertEquals("Simple Thing", thingDescription.title, "ThingDescription title should match")
+        assertEquals("A thing with complex properties, actions, and events.", thingDescription.description, "ThingDescription description should match")
+        assertEquals("1.0.0", thingDescription.version?.instance)
+        assertEquals(listOf(Link("my/link", "my/type", "my-rel", "my-anchor", "my-sizes", listOf("my-lang-1", "my-lang-2"))), thingDescription.links)
     }
 
     @Test

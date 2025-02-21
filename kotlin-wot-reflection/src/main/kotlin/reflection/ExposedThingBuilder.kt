@@ -4,6 +4,7 @@ import ai.ancf.lmos.wot.JsonMapper
 import ai.ancf.lmos.wot.Wot
 import ai.ancf.lmos.wot.reflection.annotations.*
 import ai.ancf.lmos.wot.reflection.annotations.Context
+import ai.ancf.lmos.wot.reflection.annotations.Link
 import ai.ancf.lmos.wot.reflection.annotations.VersionInfo
 import ai.ancf.lmos.wot.thing.DEFAULT_CONTEXT
 import ai.ancf.lmos.wot.thing.ExposedThing
@@ -76,6 +77,26 @@ object ExposedThingBuilder {
                 val versionInfoAnnotation = clazz.findAnnotation<VersionInfo>()
                 if(versionInfoAnnotation != null){
                     version = ai.ancf.lmos.wot.thing.schema.VersionInfo(versionInfoAnnotation.instance, versionInfoAnnotation.model)
+                }
+                clazz.findAnnotation<Link>()?.let { linkAnnotation ->
+                    links.add(ai.ancf.lmos.wot.thing.schema.Link(
+                        href = linkAnnotation.href,
+                        type = linkAnnotation.type,
+                        rel = linkAnnotation.rel,
+                        anchor = linkAnnotation.anchor,
+                        sizes = linkAnnotation.sizes,
+                        hreflang = linkAnnotation.hreflang.toList()
+                    ))
+                }
+                clazz.findAnnotation<Links>()?.values?.forEach { linkAnnotation ->
+                    links.add(ai.ancf.lmos.wot.thing.schema.Link(
+                        href = linkAnnotation.href,
+                        type = linkAnnotation.type,
+                        rel = linkAnnotation.rel,
+                        anchor = linkAnnotation.anchor,
+                        sizes = linkAnnotation.sizes,
+                        hreflang = linkAnnotation.hreflang.toList()
+                    ))
                 }
                 // 3. Inspect the properties of the class and find @Property annotations
                 clazz.memberProperties.forEach { property ->

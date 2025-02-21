@@ -15,6 +15,21 @@ annotation class Context(val prefix: String, val url : String)
 @Retention(AnnotationRetention.RUNTIME)
 annotation class VersionInfo(val instance : String, val model : String = "")
 
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Link(
+    val href: String,
+    val type: String = "",
+    val rel: String = "",
+    val anchor: String = "",
+    val sizes: String = "",
+    val hreflang: Array<String> = []
+)
+
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Links(val values: Array<Link>)
+
 @Target(AnnotationTarget.PROPERTY, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.TYPE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)
 annotation class Property(val title: String = "", val description: String = "", val readOnly: Boolean = false, val writeOnly: Boolean = false)

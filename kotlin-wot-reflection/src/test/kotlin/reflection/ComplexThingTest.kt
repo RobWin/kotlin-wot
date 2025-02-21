@@ -35,6 +35,7 @@ class ComplexThingTest {
         assertEquals("Complex Thing", thingDescription.title, "ThingDescription title should match")
         assertEquals("A thing with complex properties, actions, and events.", thingDescription.description, "ThingDescription description should match")
         assertEquals("1.0.0", thingDescription.version?.instance)
+        assertEquals(listOf(Link("my/link", "my/type", "my-rel", "my-anchor", "my-sizes", listOf("my-lang-1", "my-lang-2"))), thingDescription.links)
     }
 
     @Test

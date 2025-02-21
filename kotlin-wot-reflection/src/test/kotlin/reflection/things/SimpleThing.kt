@@ -10,6 +10,14 @@ import kotlinx.coroutines.flow.flow
     title = "Simple Thing",
     description = "A thing with complex properties, actions, and events."
 )
+@Link(
+    href = "my/link",
+    rel = "my-rel",
+    type = "my/type",
+    anchor = "my-anchor",
+    sizes = "my-sizes",
+    hreflang = ["my-lang-1", "my-lang-2"]
+)
 @VersionInfo(instance = "1.0.0")
 class SimpleThing {
 
