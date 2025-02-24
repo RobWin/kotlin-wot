@@ -7,16 +7,19 @@ arc:
         client: azure
         url: https://gpt4-uk.openai.azure.com
 
+server:
+  port: 8181
+
 wot:
   servient:
     websocket:
       server:
-        enabled: true
+        enabled: false
         host: localhost
         port: 8080
     http:
       server:
-        enabled: false
+        enabled: true
         host: localhost
         port: 8080
     mqtt:

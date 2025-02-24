@@ -11,5 +11,9 @@ spec:
       targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: http
+    - name: http-cap
+      port: 8181
+      protocol: TCP
+      targetPort: 8181
   selector:
     {{- include "wot-agent.selectorLabels" . | nindent 4 }}
