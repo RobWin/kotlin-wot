@@ -16,6 +16,10 @@ dependencies {
     api(project(":kotlin-wot-spring-boot-starter"))
     api(project(":kotlin-wot-lmos-protocol"))
     api("ai.ancf.lmos:arc-spring-boot-starter:0.111.0")
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+
     implementation("ai.ancf.lmos:arc-azure-client:0.111.0")
 }
 
