@@ -1,0 +1,37 @@
+arc:
+  ai:
+    clients:
+      - id: GPT-4o
+        model-name: GPT35T-1106
+        api-key: my-key
+        client: azure
+        url: https://gpt4-uk.openai.azure.com
+
+server:
+  port: 8181
+
+wot:
+  servient:
+    websocket:
+      server:
+        enabled: true
+        port: 8282
+        baseUrls:
+          - ws://wot-agent.default.svc.cluster.local:8282
+    http:
+      server:
+        enabled: true
+        port: 8080
+        baseUrls:
+          - http://wot-agent.default.svc.cluster.local:8080
+    mqtt:
+      server:
+        enabled: false
+        host: localhost
+        port: 54801
+        clientId: wot-servient
+      client:
+        enabled: false
+        host: localhost
+        port: 54801
+        clientId: wot-client

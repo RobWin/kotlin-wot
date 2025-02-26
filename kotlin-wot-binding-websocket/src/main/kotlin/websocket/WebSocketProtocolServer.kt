@@ -178,9 +178,9 @@ fun Application.setupRoutingWithWebSockets(servient: Servient) {
         contentConverter = JacksonWebsocketContentConverter(JsonMapper.instance)
     }
     routing {
-        route("/") {
+        route("/.well-known/wot") {
             get {
-                call.respond(servient.things.values.toList(), typeInfo<List<WoTExposedThing>>())
+                call.respond(servient.things.values.toList().first(), typeInfo<List<WoTExposedThing>>())
             }
         }
 

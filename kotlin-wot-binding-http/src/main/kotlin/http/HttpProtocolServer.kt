@@ -217,9 +217,9 @@ fun Application.setupRouting(servient: Servient) {
     }
     setupJackson()
     routing {
-        route("/") {
+        route("/.well-known/wot") {
             get {
-                call.respond(servient.things.values.toList(), typeInfo<List<WoTExposedThing>>())
+                call.respond(servient.things.values.toList().first(), typeInfo<List<WoTExposedThing>>())
             }
         }
         route("/{id}") {
