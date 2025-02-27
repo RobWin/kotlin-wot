@@ -35,3 +35,22 @@ wot:
         host: localhost
         port: 54801
         clientId: wot-client
+
+management:
+  server:
+    port: 9090
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: prometheus,metrics,info,health
+  endpoint:
+    metrics:
+      access: read_only
+    health:
+      probes:
+        enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true

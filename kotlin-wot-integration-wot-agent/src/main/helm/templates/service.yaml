@@ -4,12 +4,21 @@ metadata:
   name: {{ include "wot-agent.fullname" . }}
   labels:
     {{- include "wot-agent.labels" . | nindent 4 }}
+    wot-agent: "true"
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       protocol: TCP
-      name: http
+      name: http-wot
+    - port: 8181
+      targetPort: 8181
+      protocol: TCP
+      name: http-capabilities
+    - port: 9090
+      targetPort: 9090
+      protocol: TCP
+      name: http-health
   selector:
     {{- include "wot-agent.selectorLabels" . | nindent 4 }}

@@ -86,6 +86,20 @@ resources: {}
 #  periodSeconds: 10
 #  failureThreshold: 3
 
+livenessProbe:
+  initialDelaySeconds: 1
+  periodSeconds: 15
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 6
+
+readinessProbe:
+  initialDelaySeconds: 1
+  periodSeconds: 15
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3
+
 autoscaling:
   enabled: false
   minReplicas: 1
